@@ -19,8 +19,6 @@ final class GUIManager {
     private var mainViewController       : UIViewController!
     private var mainNavigationController : UINavigationController!
     
-    
-    
     // MARK: - Initializers
     init(){
         setInitalWindow()
@@ -44,6 +42,7 @@ final class GUIManager {
         let textAttributes = [NSAttributedString.Key.foregroundColor:UIColor.red]
         mainNavigationController.navigationBar.titleTextAttributes = textAttributes
         mainNavigationController.navigationBar.isTranslucent = false
+        
     }
     
 }

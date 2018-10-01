@@ -21,6 +21,7 @@ final class FeaturedViewController : UIViewController {
     /// Overrides
     override func viewDidLoad() {
         super.viewDidLoad()
+        guiManager.currentMainView = view
         view.backgroundColor = .black
        
         dataManager.delegate = self

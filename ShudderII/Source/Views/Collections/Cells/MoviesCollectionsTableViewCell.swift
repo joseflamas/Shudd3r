@@ -119,6 +119,11 @@ extension MoviesCollectionsTableViewCell : UICollectionViewDelegate {
         let movie = movieColletionData?[indexPath.item]
         print(movie?.title ?? "" )
         print(movie?.largeImageStringUrl ?? "")
+        
+        let moviDetail = MoviesDetailView(frame: guiManager.currentMainView.bounds, andMovieData: movie!)
+        moviDetail.movie = movie
+        
+        guiManager.currentMainView.addSubview(moviDetail)
     }
     
 }
