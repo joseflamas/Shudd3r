@@ -113,19 +113,11 @@ extension MoviesCollectionsView {
     
     func attachSubviews(){
         
-//        /// Hero View
-//        heroView = HeroViewTableViewCell(frame: CGRect(x: 0,
-//                                          y: 0,
-//                                          width: self.frame.size.width,
-//                                          height: heroSize ?? 0))
-//        heroView.translatesAutoresizingMaskIntoConstraints = false
-        
         collectionViewTable = UITableView(frame: frame, style: .grouped)
         collectionViewTable?.backgroundColor = .black
         collectionViewTable?.delegate   = self
         collectionViewTable?.dataSource = self
         collectionViewTable?.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0)
-        
         
         self.addSubview(collectionViewTable!)
     
