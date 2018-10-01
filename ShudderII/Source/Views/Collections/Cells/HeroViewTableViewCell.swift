@@ -11,6 +11,12 @@ import UIKit
 
 final class HeroViewTableViewCell : UITableViewCell {
     
+    
+    convenience init(style: UITableViewCell.CellStyle, reuseIdentifier: String?, andDataSource: [Movie]) {
+        self.init(style: style, reuseIdentifier: reuseIdentifier)
+        
+    }
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?){
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         backgroundColor = .gray
