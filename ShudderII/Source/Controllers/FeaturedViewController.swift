@@ -12,29 +12,27 @@ import UIKit
 
 final class FeaturedViewController : UIViewController {
     
-    /// Private properties
-    var spinner  = UIActivityIndicatorView(style: .whiteLarge)
-    /// Hero
-    var heroSize : CGFloat?
-    var heroView : HeroView!
-    /// Collections
-    var collectionsView : MoviesCollectionsView!
+    /// MARK - Private properties
+    private var spinner  = UIActivityIndicatorView(style: .whiteLarge)
     
+    /// Hero
+    private var heroSize : CGFloat?
+    private var heroView : HeroView!
+    
+    /// Collections
+    private var collectionsView : MoviesCollectionsView!
     
     /// Overrides
-    // ViewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         view.backgroundColor = .black
-        heroSize = 0
-        
+       
+        heroSize = 150
         dataManager.delegate = self
         requestCollectionsData()
         
     }
     
-    // MemoryWarning
     override public func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         
@@ -44,22 +42,23 @@ final class FeaturedViewController : UIViewController {
 
 
 
-
 extension FeaturedViewController {
     
     /// MARK - Private methods
     private func requestCollectionsData(){
-        /// Getting Image Data
+        
+        /// Start Spinner - This should be moved to GUIManager
         spinner.translatesAutoresizingMaskIntoConstraints = false
         spinner.startAnimating()
         view.addSubview(spinner)
         spinner.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         spinner.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
         
+        /// Getting Image Data
         requestManager.simpleRequestDataToStringfromUrl(FlickerFavsURL)
     }
     
-    /// create and add subviews
+    /// Create and add subviews
     private func attachSubViews(withMovieInfo: Dictionary<String,[Movie]>){
 
         /// Hero View
@@ -71,7 +70,7 @@ extension FeaturedViewController {
         
         /// Collection View
         collectionsView = MoviesCollectionsView(frame: CGRect(x: 0,
-                                                              y: (heroSize ?? 0),
+                                                              y: 0,
                                                               width: view.frame.size.width,
                                                               height: (view.frame.size.height - (heroSize ?? 0))),
                                                 andMovieData: withMovieInfo)
@@ -87,15 +86,10 @@ extension FeaturedViewController {
     private func setConstraints(){
         let guide = self.view.safeAreaLayoutGuide
         
-        view.trailingAnchor.constraint(equalTo: guide.trailingAnchor).isActive = true
-        view.leadingAnchor.constraint(equalTo: guide.leadingAnchor).isActive = true
-        view.topAnchor.constraint(equalTo: guide.topAnchor).isActive = true
-        view.bottomAnchor.constraint(equalTo: guide.bottomAnchor).isActive = true
-        
         /// Hero
-        heroView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        heroView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        heroView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        heroView.trailingAnchor.constraint(equalTo: guide.trailingAnchor).isActive = true
+        heroView.leadingAnchor.constraint(equalTo: guide.leadingAnchor).isActive = true
+        heroView.topAnchor.constraint(equalTo: guide.topAnchor).isActive = true
         heroView.heightAnchor.constraint(equalToConstant: (self.heroSize ?? 0)).isActive = true
         
         /// Collections
@@ -114,6 +108,7 @@ extension FeaturedViewController : DataManagerDelegate {
     
     func decodedDataObtained(data: Dictionary<String,[Movie]>) {
         
+        /// All of these are UI related - This should be moved to GUIManager
         DispatchQueue.main.async(){
             self.spinner.stopAnimating()
             self.spinner.removeFromSuperview()
@@ -123,7 +118,5 @@ extension FeaturedViewController : DataManagerDelegate {
             
         }
     }
-    
-    
     
 }

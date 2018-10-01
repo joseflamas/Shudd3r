@@ -12,16 +12,14 @@ import UIKit
 
 
 final class AppManager {
-    
-    // MARK: - Private Properties
-    
+
     // MARK: - Public Properties
     public static let sharedManager : AppManager = AppManager()
     
+    // MARK: - Private Properties
     
     // MARK: - Initializers
     init(){
-
         initManagers()
         
     }

@@ -32,7 +32,7 @@ let CommonCachePath              : String   = CommonCacheDirectoryURL.path + Com
 
 /// CACHE
 var CacheMemoryCapacity          : Int      = 250000000  // ~ 250 MB
-var CacheDiskCapacity            : Int      = 250000000 // ~ 250 MB
+var CacheDiskCapacity            : Int      = 250000000  // ~ 250 MB
 let CommonCache                  : URLCache = URLCache(memoryCapacity: CacheMemoryCapacity,
                                                        diskCapacity: CacheDiskCapacity,
                                                        diskPath: CommonCachePath)
@@ -42,7 +42,6 @@ let moviePosterCollectionCache   = NSCache<NSString,UIImage>()
 /// FLICKR API
 let FlickerEndPoint              : String   = "https://api.flickr.com/services/rest/?"
 let FlickerKey                   : String   = "92a1b6ca3019c1870efe028ca9c55c12"
-//let CommonFlickerSecret          : String   = "3e626df668233019"
 let FlickerUserId                : String   = "156837020@N07"
 let FlickerFavMethod             : String   = "flickr.favorites.getList"
 let FlickerFormat                : String   = "json"

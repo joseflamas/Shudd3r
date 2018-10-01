@@ -26,17 +26,18 @@ final class MoviesCollectionsView : UIView {
         moviesSectionKeys = Array(andMovieData.keys)
         
         collectionViewTable = UITableView(frame: frame, style: .grouped)
+        collectionViewTable?.backgroundColor = .black
         collectionViewTable?.delegate   = self
         collectionViewTable?.dataSource = self
+        collectionViewTable?.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0)
         
         self.addSubview(collectionViewTable!)
-        
         
     }
     
     override init(frame: CGRect){
         super.init(frame: frame)
-        backgroundColor = .gray
+        backgroundColor = .black
 
     }
     
@@ -80,7 +81,7 @@ extension MoviesCollectionsView : UITableViewDataSource {
 extension MoviesCollectionsView : UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 45
+        return 10
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

@@ -11,17 +11,26 @@ import UIKit
 
 final class GUIManager {
     
+    // MARK: - Public Properties
+    public  var currentMainView          : UIView!
+    
     // MARK: - Private Properties
     private var mainWindow               : UIWindow!
     private var mainViewController       : UIViewController!
     private var mainNavigationController : UINavigationController!
     
-    // MARK: - Public Properties
-    public var currentMainView           : UIView!
+    
     
     // MARK: - Initializers
     init(){
         setInitalWindow()
+        
+    }
+    
+    // MARK: - Public Methods
+    public func getInitialWindow() -> UIWindow {
+        mainWindow.rootViewController = mainNavigationController
+        return mainWindow
         
     }
     
@@ -32,30 +41,16 @@ final class GUIManager {
         mainViewController.title = StringsAliveMessage
         mainNavigationController = UINavigationController(rootViewController: mainViewController)
         mainNavigationController.navigationBar.barTintColor = .black
-        let textAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
+        let textAttributes = [NSAttributedString.Key.foregroundColor:UIColor.red]
         mainNavigationController.navigationBar.titleTextAttributes = textAttributes
-        
+        mainNavigationController.navigationBar.isTranslucent = false
     }
-    
-    
-    // MARK: - Public Methods
-    public func getInitialWindow() -> UIWindow {
-        mainWindow.rootViewController = mainNavigationController
-        return mainWindow
-        
-    }
-    
-    
-    
-    
     
 }
 
 
-// Animations
+/// Mark - Animations
 extension GUIManager {
-    
-    
     
     
 }

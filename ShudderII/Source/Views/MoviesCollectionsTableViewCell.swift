@@ -20,15 +20,16 @@ class MoviesCollectionsTableViewCell : UITableViewCell {
         movieColletionData = andDataSource
         
         let layout = UICollectionViewFlowLayout()
-        layout.minimumInteritemSpacing = 2
+        layout.minimumInteritemSpacing = 0
         layout.minimumLineSpacing      = 8
+        layout.sectionInset            = UIEdgeInsets(top: 4, left: 0, bottom: 4, right: 4)
         layout.scrollDirection = UICollectionView.ScrollDirection.horizontal
         
         collectionView = UICollectionView(frame: CGRect(x: 0, y: 0, width: self.bounds.width, height: 120), collectionViewLayout: layout)
         collectionView?.delegate   = self
         collectionView?.dataSource = self
         collectionView?.register(MoviesCollectionsCollectionViewCell.self, forCellWithReuseIdentifier: "CollectionViewCell")
-        collectionView?.backgroundColor = .gray
+        collectionView?.backgroundColor = .black
         collectionView?.showsHorizontalScrollIndicator = false
         
         self.addSubview(collectionView!)
@@ -37,8 +38,7 @@ class MoviesCollectionsTableViewCell : UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?){
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
-        
+        backgroundColor = .black
         
     }
     
@@ -49,8 +49,9 @@ class MoviesCollectionsTableViewCell : UITableViewCell {
 
 }
 
+/// MARK - UICollectionViewDataSource
 extension MoviesCollectionsTableViewCell : UICollectionViewDataSource {
-    // MARK: UICollectionViewDataSource
+   
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         return 1
     }
@@ -64,12 +65,12 @@ extension MoviesCollectionsTableViewCell : UICollectionViewDataSource {
         
         
         if let cachedImage  = moviePosterCollectionCache.object(forKey: "icon-\(movieColletionData?[indexPath.item].id.description ?? "")" as NSString){
-            print("cached version")
             cell.moviePosterImage  = cachedImage
             
         } else {
-            print("new version")
             let movie           = movieColletionData?[indexPath.item]
+            
+            /// Move to Request Manager
             URLSession.shared.dataTask(with: URL(string: movie!.thumbnailStringUrl)!) { (data, response, error) in
                 if error != nil {
                     print("Failed fetching image:")
@@ -81,6 +82,8 @@ extension MoviesCollectionsTableViewCell : UICollectionViewDataSource {
                 }
                 DispatchQueue.main.async {
                     let image = UIImage(data: data!)
+                    
+                    /// Move to Data Manager
                     moviePosterCollectionCache.setObject(image!, forKey: "icon-\(self.movieColletionData?[indexPath.item].id.description ?? "")" as NSString)
                     cell.movie = self.movieColletionData?[indexPath.item]
                     cell.moviePosterImage = image
@@ -90,13 +93,12 @@ extension MoviesCollectionsTableViewCell : UICollectionViewDataSource {
             
         }
         
+        /// Move to Data Manager
         if let cachedVersion = movieCollectionCache.object(forKey: indexPath.item.description  as NSString){
-            print("cached version")
             cell.movie    = cachedVersion
             cell.movieKey = indexPath.item.description as String
 
         } else {
-            print("new version")
             let movie = movieColletionData?[indexPath.item]
             movieCollectionCache.setObject(movie!, forKey: indexPath.item.description as NSString )
             cell.movie    = movie
@@ -104,22 +106,28 @@ extension MoviesCollectionsTableViewCell : UICollectionViewDataSource {
             
         }
         
-        
         return cell
 
     }
     
 }
 
+/// MARK - UICollectionViewDelegate
 extension MoviesCollectionsTableViewCell : UICollectionViewDelegate {
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let movie = movieColletionData?[indexPath.item]
+        print(movie?.title ?? "" )
+        print(movie?.largeImageStringUrl ?? "")
+    }
     
 }
 
-
+/// MARK - UICollectionViewDelegateFlowLayout
 extension MoviesCollectionsTableViewCell : UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 85, height: self.frame.height)
+        return CGSize(width: 85, height: self.frame.height-10)
     }
     
 }

@@ -15,6 +15,7 @@ protocol DataManagerDelegate {
 
 
 class DataManager {
+    
     /// Static Properties
     public  static  let sharedManager  : DataManager  = DataManager()
     var delegate : DataManagerDelegate?
