@@ -15,10 +15,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        /// Init Manager
+        //  The App Manager takes care from now on
+        //  - comment : App Manager is defined in Managers file
+        appManager = AppManager.sharedManager
+        
+        //  The UI Manager will handle all UI
+        //  - comment : UI Manager is defined in Managers file and initialized
+        //              by the application manager appManager
+        window     = guiManager.getInitialWindow()
+        window?.makeKeyAndVisible()
+        
+        
         return true
     }
 
+    
+    
+    
+    
+    
+    
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.

@@ -8,12 +8,25 @@
 
 /* Begin PBXBuildFile section */
 		BB4903D72160240D003F10C2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4903D62160240D003F10C2 /* AppDelegate.swift */; };
-		BB4903D92160240D003F10C2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4903D82160240D003F10C2 /* ViewController.swift */; };
-		BB4903DC2160240D003F10C2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB4903DA2160240D003F10C2 /* Main.storyboard */; };
 		BB4903DE2160240F003F10C2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BB4903DD2160240F003F10C2 /* Assets.xcassets */; };
 		BB4903E12160240F003F10C2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB4903DF2160240F003F10C2 /* LaunchScreen.storyboard */; };
 		BB4903EC2160240F003F10C2 /* ShudderIITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4903EB2160240F003F10C2 /* ShudderIITests.swift */; };
 		BB4903F72160240F003F10C2 /* ShudderIIUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4903F62160240F003F10C2 /* ShudderIIUITests.swift */; };
+		BB49040D2160279E003F10C2 /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB49040C2160279E003F10C2 /* Common.swift */; };
+		BB49040F2160280B003F10C2 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB49040E2160280B003F10C2 /* Strings.swift */; };
+		BB490411216028AD003F10C2 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB490410216028AD003F10C2 /* Errors.swift */; };
+		BB4904162160297F003F10C2 /* AppManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4904152160297F003F10C2 /* AppManager.swift */; };
+		BB49041821602AA2003F10C2 /* GUIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB49041721602AA2003F10C2 /* GUIManager.swift */; };
+		BB49041A21602BBB003F10C2 /* FeaturedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB49041921602BBB003F10C2 /* FeaturedViewController.swift */; };
+		BB49041C21602F22003F10C2 /* Managers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB49041B21602F22003F10C2 /* Managers.swift */; };
+		BB49041E21604DF9003F10C2 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB49041D21604DF9003F10C2 /* DataManager.swift */; };
+		BB49042021604E50003F10C2 /* RequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB49041F21604E50003F10C2 /* RequestManager.swift */; };
+		BB49042821607034003F10C2 /* MoviesCollectionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB49042721607034003F10C2 /* MoviesCollectionsView.swift */; };
+		BB49042A216099CE003F10C2 /* MoviesCollectionsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB490429216099CE003F10C2 /* MoviesCollectionsTableViewCell.swift */; };
+		BB49042C21613465003F10C2 /* HeroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB49042B21613465003F10C2 /* HeroView.swift */; };
+		BB49042E2161544F003F10C2 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB49042D2161544F003F10C2 /* Movie.swift */; };
+		BB4904302161803F003F10C2 /* ArrayExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB49042F2161803F003F10C2 /* ArrayExtensions.swift */; };
+		BB49043421619BCB003F10C2 /* MoviesCollectionsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB49043321619BCB003F10C2 /* MoviesCollectionsCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,8 +49,6 @@
 /* Begin PBXFileReference section */
 		BB4903D32160240D003F10C2 /* ShudderII.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShudderII.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB4903D62160240D003F10C2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		BB4903D82160240D003F10C2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		BB4903DB2160240D003F10C2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BB4903DD2160240F003F10C2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BB4903E02160240F003F10C2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BB4903E22160240F003F10C2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -47,6 +58,21 @@
 		BB4903F22160240F003F10C2 /* ShudderIIUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ShudderIIUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB4903F62160240F003F10C2 /* ShudderIIUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShudderIIUITests.swift; sourceTree = "<group>"; };
 		BB4903F82160240F003F10C2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BB49040C2160279E003F10C2 /* Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
+		BB49040E2160280B003F10C2 /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
+		BB490410216028AD003F10C2 /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
+		BB4904152160297F003F10C2 /* AppManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppManager.swift; sourceTree = "<group>"; };
+		BB49041721602AA2003F10C2 /* GUIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GUIManager.swift; sourceTree = "<group>"; };
+		BB49041921602BBB003F10C2 /* FeaturedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedViewController.swift; sourceTree = "<group>"; };
+		BB49041B21602F22003F10C2 /* Managers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Managers.swift; sourceTree = "<group>"; };
+		BB49041D21604DF9003F10C2 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		BB49041F21604E50003F10C2 /* RequestManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestManager.swift; sourceTree = "<group>"; };
+		BB49042721607034003F10C2 /* MoviesCollectionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesCollectionsView.swift; sourceTree = "<group>"; };
+		BB490429216099CE003F10C2 /* MoviesCollectionsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesCollectionsTableViewCell.swift; sourceTree = "<group>"; };
+		BB49042B21613465003F10C2 /* HeroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroView.swift; sourceTree = "<group>"; };
+		BB49042D2161544F003F10C2 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
+		BB49042F2161803F003F10C2 /* ArrayExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtensions.swift; sourceTree = "<group>"; };
+		BB49043321619BCB003F10C2 /* MoviesCollectionsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesCollectionsCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +103,7 @@
 		BB4903CA2160240C003F10C2 = {
 			isa = PBXGroup;
 			children = (
+				BB4903D62160240D003F10C2 /* AppDelegate.swift */,
 				BB4903D52160240D003F10C2 /* ShudderII */,
 				BB4903EA2160240F003F10C2 /* ShudderIITests */,
 				BB4903F52160240F003F10C2 /* ShudderIIUITests */,
@@ -97,12 +124,10 @@
 		BB4903D52160240D003F10C2 /* ShudderII */ = {
 			isa = PBXGroup;
 			children = (
-				BB4903D62160240D003F10C2 /* AppDelegate.swift */,
-				BB4903D82160240D003F10C2 /* ViewController.swift */,
-				BB4903DA2160240D003F10C2 /* Main.storyboard */,
-				BB4903DD2160240F003F10C2 /* Assets.xcassets */,
-				BB4903DF2160240F003F10C2 /* LaunchScreen.storyboard */,
-				BB4903E22160240F003F10C2 /* Info.plist */,
+				BB49040421602525003F10C2 /* Resources */,
+				BB49040521602535003F10C2 /* Source */,
+				BB4904062160256F003F10C2 /* Supporting Files */,
+				BB4904072160257F003F10C2 /* User Interface */,
 			);
 			path = ShudderII;
 			sourceTree = "<group>";
@@ -123,6 +148,108 @@
 				BB4903F82160240F003F10C2 /* Info.plist */,
 			);
 			path = ShudderIIUITests;
+			sourceTree = "<group>";
+		};
+		BB49040421602525003F10C2 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				BB4903DD2160240F003F10C2 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		BB49040521602535003F10C2 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				BB490408216025DD003F10C2 /* Common */,
+				BB490409216025E2003F10C2 /* Models */,
+				BB49040A216025FC003F10C2 /* Views */,
+				BB49040B2160260D003F10C2 /* Controllers */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+		BB4904062160256F003F10C2 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				BB4903E22160240F003F10C2 /* Info.plist */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		BB4904072160257F003F10C2 /* User Interface */ = {
+			isa = PBXGroup;
+			children = (
+				BB4903DF2160240F003F10C2 /* LaunchScreen.storyboard */,
+			);
+			path = "User Interface";
+			sourceTree = "<group>";
+		};
+		BB490408216025DD003F10C2 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				BB49040C2160279E003F10C2 /* Common.swift */,
+				BB49040E2160280B003F10C2 /* Strings.swift */,
+				BB490410216028AD003F10C2 /* Errors.swift */,
+				BB49041B21602F22003F10C2 /* Managers.swift */,
+				BB49041221602931003F10C2 /* Managers */,
+				BB49041321602939003F10C2 /* Extensions */,
+				BB4904142160294B003F10C2 /* Utilities */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		BB490409216025E2003F10C2 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				BB49042D2161544F003F10C2 /* Movie.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		BB49040A216025FC003F10C2 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				BB49042B21613465003F10C2 /* HeroView.swift */,
+				BB49042721607034003F10C2 /* MoviesCollectionsView.swift */,
+				BB490429216099CE003F10C2 /* MoviesCollectionsTableViewCell.swift */,
+				BB49043321619BCB003F10C2 /* MoviesCollectionsCollectionViewCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		BB49040B2160260D003F10C2 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				BB49041921602BBB003F10C2 /* FeaturedViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		BB49041221602931003F10C2 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				BB4904152160297F003F10C2 /* AppManager.swift */,
+				BB49041721602AA2003F10C2 /* GUIManager.swift */,
+				BB49041D21604DF9003F10C2 /* DataManager.swift */,
+				BB49041F21604E50003F10C2 /* RequestManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		BB49041321602939003F10C2 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				BB49042F2161803F003F10C2 /* ArrayExtensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		BB4904142160294B003F10C2 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -231,7 +358,6 @@
 			files = (
 				BB4903E12160240F003F10C2 /* LaunchScreen.storyboard in Resources */,
 				BB4903DE2160240F003F10C2 /* Assets.xcassets in Resources */,
-				BB4903DC2160240D003F10C2 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -256,7 +382,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BB4903D92160240D003F10C2 /* ViewController.swift in Sources */,
+				BB49042E2161544F003F10C2 /* Movie.swift in Sources */,
+				BB4904302161803F003F10C2 /* ArrayExtensions.swift in Sources */,
+				BB49041821602AA2003F10C2 /* GUIManager.swift in Sources */,
+				BB49041E21604DF9003F10C2 /* DataManager.swift in Sources */,
+				BB49041C21602F22003F10C2 /* Managers.swift in Sources */,
+				BB490411216028AD003F10C2 /* Errors.swift in Sources */,
+				BB49042A216099CE003F10C2 /* MoviesCollectionsTableViewCell.swift in Sources */,
+				BB49042821607034003F10C2 /* MoviesCollectionsView.swift in Sources */,
+				BB4904162160297F003F10C2 /* AppManager.swift in Sources */,
+				BB49040D2160279E003F10C2 /* Common.swift in Sources */,
+				BB49042021604E50003F10C2 /* RequestManager.swift in Sources */,
+				BB49040F2160280B003F10C2 /* Strings.swift in Sources */,
+				BB49042C21613465003F10C2 /* HeroView.swift in Sources */,
+				BB49043421619BCB003F10C2 /* MoviesCollectionsCollectionViewCell.swift in Sources */,
+				BB49041A21602BBB003F10C2 /* FeaturedViewController.swift in Sources */,
 				BB4903D72160240D003F10C2 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -293,14 +433,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		BB4903DA2160240D003F10C2 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				BB4903DB2160240D003F10C2 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		BB4903DF2160240F003F10C2 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -434,7 +566,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = N7T3D3XZJC;
-				INFOPLIST_FILE = ShudderII/Info.plist;
+				INFOPLIST_FILE = "ShudderII/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -452,7 +584,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = N7T3D3XZJC;
-				INFOPLIST_FILE = ShudderII/Info.plist;
+				INFOPLIST_FILE = "ShudderII/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
