@@ -12,11 +12,16 @@ import UIKit
 
 final class MoviesCollectionsView : UIView {
     
-    let collectionCellIdentifier = "CollectionCell"
-    var collectionViewTable      : UITableView?
+    /// Hero
+    private var heroSize : CGFloat?
+    private let heroViewCellIdentifier   = "HeroCell"
     
-    var moviesDataSource         : Dictionary<String,[Movie]>?
-    var moviesSectionKeys        : [String]?
+    /// Collections
+    private let collectionCellIdentifier = "CollectionCell"
+    private var collectionViewTable      : UITableView?
+    
+    private var moviesDataSource         : Dictionary<String,[Movie]>?
+    private var moviesSectionKeys        : [String]?
     
     
     convenience init(frame: CGRect, andMovieData: Dictionary<String,[Movie]>) {
@@ -25,13 +30,8 @@ final class MoviesCollectionsView : UIView {
         moviesDataSource  = andMovieData
         moviesSectionKeys = Array(andMovieData.keys)
         
-        collectionViewTable = UITableView(frame: frame, style: .grouped)
-        collectionViewTable?.backgroundColor = .black
-        collectionViewTable?.delegate   = self
-        collectionViewTable?.dataSource = self
-        collectionViewTable?.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0)
-        
-        self.addSubview(collectionViewTable!)
+        heroSize = 150
+        attachSubviews()
         
     }
     
@@ -62,6 +62,12 @@ extension MoviesCollectionsView : UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if indexPath.section == 0 {
+            let heroCell = HeroViewTableViewCell(style: .default, reuseIdentifier: heroViewCellIdentifier)
+            heroCell.selectionStyle = .none
+            return heroCell
+            
+        }
         let cell = MoviesCollectionsTableViewCell(style: .default, reuseIdentifier: collectionCellIdentifier,
                                                   andDataSource: moviesDataSource![moviesSectionKeys![indexPath.section]]!)
         cell.selectionStyle = .none
@@ -81,10 +87,16 @@ extension MoviesCollectionsView : UITableViewDataSource {
 extension MoviesCollectionsView : UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if section == 0 {
+            return 0
+        }
         return 10
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.section == 0 {
+            return heroSize!
+        }
         return 120
         
     }
@@ -93,5 +105,30 @@ extension MoviesCollectionsView : UITableViewDelegate {
         return 0
     }
     
+    
+}
+
+
+extension MoviesCollectionsView {
+    
+    func attachSubviews(){
+        
+//        /// Hero View
+//        heroView = HeroViewTableViewCell(frame: CGRect(x: 0,
+//                                          y: 0,
+//                                          width: self.frame.size.width,
+//                                          height: heroSize ?? 0))
+//        heroView.translatesAutoresizingMaskIntoConstraints = false
+        
+        collectionViewTable = UITableView(frame: frame, style: .grouped)
+        collectionViewTable?.backgroundColor = .black
+        collectionViewTable?.delegate   = self
+        collectionViewTable?.dataSource = self
+        collectionViewTable?.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0)
+        
+        
+        self.addSubview(collectionViewTable!)
+    
+    }
     
 }
