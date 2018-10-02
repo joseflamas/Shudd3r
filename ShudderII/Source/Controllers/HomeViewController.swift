@@ -10,20 +10,19 @@ import Foundation
 import UIKit
 
 
-final class FeaturedViewController : UIViewController {
+final class HomeViewController : UIViewController {
     
-    /// MARK - Private properties
-    private var spinner  = UIActivityIndicatorView(style: .whiteLarge)
-    
-    /// Collections
+    /// Loading Spinner -- Could be moved to the Guimanager
+    private var spinner         : UIActivityIndicatorView = UIActivityIndicatorView(style: .whiteLarge)
+    /// Movie Collections
     private var collectionsView : MoviesCollectionsView!
     
     /// Overrides
     override func viewDidLoad() {
         super.viewDidLoad()
-        guiManager.currentMainView = view
-        view.backgroundColor = .black
-       
+        guiManager.setCurrentMainView(to: view)
+        
+        /// Data
         dataManager.delegate = self
         requestCollectionsData()
         
@@ -37,44 +36,30 @@ final class FeaturedViewController : UIViewController {
 }
 
 
-
-extension FeaturedViewController {
+/// MARK - Utility Methods
+extension HomeViewController {
     
-    /// MARK - Private methods
+    /// Request Collections data
     private func requestCollectionsData(){
-        
-        /// Start Spinner - This should be moved to GUIManager
-        spinner.translatesAutoresizingMaskIntoConstraints = false
-        spinner.startAnimating()
-        view.addSubview(spinner)
-        spinner.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        spinner.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-        
         /// Getting Image Data
+        presentSpinner()
         requestManager.simpleRequestDataToStringfromUrl(FlickerFavsURL)
+        
     }
     
     /// Create and add subviews
     private func attachSubViews(withMovieInfo: Dictionary<String,[Movie]>){
-        
         /// Collection View
-        collectionsView = MoviesCollectionsView(frame: CGRect(x: 0,
-                                                              y: 0,
-                                                              width: view.frame.size.width,
-                                                              height: (view.frame.size.height )),
-                                                andMovieData: withMovieInfo)
+        collectionsView = MoviesCollectionsView(frame: view.bounds, andMovieData: withMovieInfo)
         collectionsView.translatesAutoresizingMaskIntoConstraints = false
-        
         view.addSubview(self.collectionsView)
 
     }
     
-    
-    /// set constraints
+    /// Set constraints
     private func setConstraints(){
+        /// Safe area
         let guide = self.view.safeAreaLayoutGuide
-        
-        /// Collections
         collectionsView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         collectionsView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         collectionsView.topAnchor.constraint(equalTo: guide.topAnchor).isActive = true
@@ -82,19 +67,34 @@ extension FeaturedViewController {
         
     }
     
+    /// Spinner methods
+    private func presentSpinner(){
+        /// Start Spinner - This could be moved to GUIManager
+        spinner.translatesAutoresizingMaskIntoConstraints = false
+        spinner.startAnimating()
+        view.addSubview(spinner)
+        spinner.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        spinner.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        
+    }
+    
+    private func stopSippner(){
+        /// Stop and remove Spinner - This could be moved to GUIManager
+        spinner.stopAnimating()
+        spinner.removeFromSuperview()
+        
+    }
+    
 }
 
 
 /// MARK - Data Manager Delegate
-extension FeaturedViewController : DataManagerDelegate {
+extension HomeViewController : DataManagerDelegate {
     
     func decodedDataObtained(data: Dictionary<String,[Movie]>) {
-        
         /// All of these are UI related - This should be moved to GUIManager
         DispatchQueue.main.async(){
-            self.spinner.stopAnimating()
-            self.spinner.removeFromSuperview()
-            
+            self.stopSippner()
             self.attachSubViews(withMovieInfo: data)
             self.setConstraints()
             

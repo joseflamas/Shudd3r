@@ -12,48 +12,73 @@ import UIKit
 
 final class MoviesCollectionsView : UIView {
     
-    /// Hero
-    private var heroSize : CGFloat?
-    private let heroViewCellIdentifier   = "HeroCell"
+    /// Collections Table
+    private var collectionViewTable        : UITableView!
     
-    /// Collections
-    private let collectionCellIdentifier = "CollectionCell"
-    private var collectionViewTable      : UITableView?
+    /// Hero Collection
+    private static let heroViewCellIdentifier        = "HeroCell"
+    private let heroViewHeight             : CGFloat = 160 // This could be optimized with a custom header view
+    private let heroViewHeaderHeight       : CGFloat = 0
     
-    private var moviesDataSource         : Dictionary<String,[Movie]>?
-    private var moviesSectionKeys        : [String]?
+    /// Movies Collections
+    private static let collectionCellIdentifier      = "CollectionCell"
+    private let collectionViewHeight       : CGFloat = 150 // This could be optimized with a custom header view
+    private let collectionViewHeaderHeight : CGFloat = 25
+    private var moviesDataSource           : Dictionary<String,[Movie]>!
+    private var moviesSectionKeys          : [String]!
     
     
+    /// Convenience initializer
     convenience init(frame: CGRect, andMovieData: Dictionary<String,[Movie]>) {
         self.init(frame: frame)
         
+        /// Table Data Sources
         moviesDataSource  = andMovieData
         moviesSectionKeys = Array(andMovieData.keys)
         
-        heroSize = 150
+        /// Create and add the Collections Table
         attachSubviews()
         
     }
     
+    /// Overrides
     override init(frame: CGRect){
         super.init(frame: frame)
-        backgroundColor = .black
+        guiManager.setCurrentViewStandardStyle()
 
     }
     
+    /// Required Initializer
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+        
     }
     
 }
 
 
+/// MARK - Utility Methods
+extension MoviesCollectionsView {
+    
+    func attachSubviews(){
+        collectionViewTable                 = UITableView(frame: frame, style: .grouped)
+        collectionViewTable.delegate        = self
+        collectionViewTable.dataSource      = self
+        collectionViewTable.backgroundColor = CommonBackgroundColor
+        collectionViewTable.separatorColor  = CommonBackgroundColor
+        
+        self.addSubview(collectionViewTable!)
+        
+    }
+    
+}
 
 
-/// Table data source
+/// MARK - Table data source
 extension MoviesCollectionsView : UITableViewDataSource {
+
     func numberOfSections(in tableView: UITableView) -> Int {
-        return moviesDataSource?.keys.count ?? 0
+        return moviesDataSource.keys.count
     
     }
     
@@ -62,66 +87,82 @@ extension MoviesCollectionsView : UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        var cell : UITableViewCell
+        /// In case the types of cell increases this should change to switch case
         if indexPath.section == 0 {
-            let heroCell = HeroViewTableViewCell(style: .default, reuseIdentifier: heroViewCellIdentifier, andDataSource: moviesDataSource![moviesSectionKeys!.last!]!)
-            heroCell.selectionStyle = .none
+            /// At the top is the Hero View
+            cell = HeroViewTableViewCell(style: .default,
+                                         reuseIdentifier: MoviesCollectionsView.heroViewCellIdentifier,
+                                         andDataSource: moviesDataSource[moviesSectionKeys.last!]!)
             
-            return heroCell
+        } else {
+            /// Everything else is a Moview Collection
+            cell = MoviesCollectionsTableViewCell(style: .default,
+                                                  reuseIdentifier: MoviesCollectionsView.collectionCellIdentifier,
+                                                  andDataSource: moviesDataSource[moviesSectionKeys[indexPath.section]]!)
             
         }
-        let cell = MoviesCollectionsTableViewCell(style: .default, reuseIdentifier: collectionCellIdentifier,
-                                                  andDataSource: moviesDataSource![moviesSectionKeys![indexPath.section]]!)
         cell.selectionStyle = .none
+        cell.separatorInset = .zero
+        cell.layoutMargins  = .zero
         return cell
     
     }
     
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return moviesSectionKeys?[section]
-        
-    }
     
 }
 
 
-/// Table data delegate
+/// MARK - Table data delegate
 extension MoviesCollectionsView : UITableViewDelegate {
     
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return moviesSectionKeys[section]
+        
+    }
+    
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        if section == 0 {
-            return 0
-        }
-        return 10
+        if section == 0 { return heroViewHeaderHeight }
+        return collectionViewHeaderHeight
+        
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.section == 0 {
-            return heroSize!
-        }
-        return 120
+        if indexPath.section == 0 { return heroViewHeight }
+        return collectionViewHeight
         
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 0
+    
     }
     
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = UIView(frame: CGRect(x: 0,
+                                              y: 0,
+                                              width: tableView.bounds.size.width,
+                                              height: tableView.bounds.size.height))
+        headerView.backgroundColor = .clear
+        let headerLabel = UILabel(frame: CGRect(x: 8,
+                                                y: 6,
+                                                width: tableView.bounds.size.width,
+                                                height: tableView.bounds.size.height))
+        headerLabel.font = UIFont(name: "HelveticaNeue-CondensedBold", size: 14)
+        headerLabel.textColor = .gray
+        headerLabel.text = moviesSectionKeys[section]
+        headerLabel.sizeToFit()
+        headerView.addSubview(headerLabel)
+        
+        return headerView
+    }
+    
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        return UIView(frame: CGRect.zero)
+    }
     
 }
 
 
-extension MoviesCollectionsView {
-    
-    func attachSubviews(){
-        
-        collectionViewTable = UITableView(frame: frame, style: .grouped)
-        collectionViewTable?.backgroundColor = .black
-        collectionViewTable?.delegate   = self
-        collectionViewTable?.dataSource = self
-        collectionViewTable?.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0)
-        
-        self.addSubview(collectionViewTable!)
-    
-    }
-    
-}
+

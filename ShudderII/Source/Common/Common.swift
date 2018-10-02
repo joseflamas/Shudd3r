@@ -51,3 +51,5 @@ let FlickerFavMethodkey          : String   = "&method="
 let FlickerFormatkey             : String   = "&format="
 
 let FlickerFavsURL               : URL!     = URL(string: "\(FlickerEndPoint)\(FlickerAPIKeykey+FlickerKey)\(FlickerUserIdkey+FlickerUserId)\(FlickerFavMethodkey+FlickerFavMethod)\(FlickerFormatkey+FlickerFormat)")
+
+let CommonBackgroundColor        : UIColor  = UIColor(red:0.04, green:0.13, blue:0.14, alpha:1.0)

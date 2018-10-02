@@ -23,7 +23,6 @@ class DataManager {
     public  var moviesCollections : Dictionary<String,[Movie]>?
     private var movies : [Movie]?
     
-    
     /// Init
     init(){
         print("Initializing Data Manager ...")

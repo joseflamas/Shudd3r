@@ -11,13 +11,11 @@ import UIKit
 
 final class GUIManager {
     
-    // MARK: - Public Properties
-    public  var currentMainView          : UIView!
-    
     // MARK: - Private Properties
     private var mainWindow               : UIWindow!
     private var mainViewController       : UIViewController!
     private var mainNavigationController : UINavigationController!
+    private var currentMainView          : UIView!
     
     // MARK: - Initializers
     init(){
@@ -25,31 +23,52 @@ final class GUIManager {
         
     }
     
-    // MARK: - Public Methods
+    // MARK: - UIWindows
     public func getInitialWindow() -> UIWindow {
         mainWindow.rootViewController = mainNavigationController
         return mainWindow
         
     }
     
-    // MARK: - Private Methods
+    public func getmainWindow() -> UIWindow {
+        return mainWindow
+    }
+    
+    
     private func setInitalWindow() {
-        mainWindow = UIWindow(frame: UIScreen.main.bounds)
-        mainViewController = FeaturedViewController()
+        mainWindow               = UIWindow(frame: UIScreen.main.bounds)
+        mainViewController       = HomeViewController()
         mainViewController.title = StringsAliveMessage
         mainNavigationController = UINavigationController(rootViewController: mainViewController)
+        setNavigationConrolletStyle()
+        
+    }
+    
+    // MARK: - Navigation controller
+    public func setNavigationConrolletStyle(){
         mainNavigationController.navigationBar.barTintColor = .black
-        let textAttributes = [NSAttributedString.Key.foregroundColor:UIColor.red]
+        let textAttributes       = [NSAttributedString.Key.foregroundColor:UIColor.red]
         mainNavigationController.navigationBar.titleTextAttributes = textAttributes
-        mainNavigationController.navigationBar.isTranslucent = false
+        //        mainNavigationController.navigationBar.isTranslucent = false
+        
+    }
+    
+    // MARK: - UIViews
+    public func setCurrentMainView(to view: UIView){
+        currentMainView = view
+        setCurrentViewStandardStyle()
+        
+    }
+    
+    public func getCurrentMainview() -> UIView {
+        return currentMainView
+        
+    }
+    
+    public func setCurrentViewStandardStyle(){
+        currentMainView.backgroundColor = CommonBackgroundColor
         
     }
     
 }
 
-
-/// Mark - Animations
-extension GUIManager {
-    
-    
-}

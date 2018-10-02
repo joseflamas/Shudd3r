@@ -1,15 +1,15 @@
 //
-//  MoviesCollectionsCollectionViewCell.swift
+//  HeroViewCollectionViewCell.swift
 //  ShudderII
 //
-//  Created by Guillermo Irigoyen on 9/30/18.
+//  Created by Guillermo Irigoyen on 10/1/18.
 //  Copyright © 2018 Guillermo Irigoyen. All rights reserved.
 //
 
 import Foundation
 import UIKit
 
-class MoviesCollectionsCollectionViewCell: UICollectionViewCell {
+class HeroViewCollectionViewCell : UICollectionViewCell {
     
     var movie : Movie?
     var movieKey : String?
@@ -45,8 +45,7 @@ class MoviesCollectionsCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
         
     }
-
+    
 }
-
 
 

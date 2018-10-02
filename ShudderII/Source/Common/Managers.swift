@@ -11,7 +11,7 @@ import Foundation
 /// MANAGERS
 // - comment: there is only one instance of each through App LifeCycle
 
-var appManager     :  AppManager!  // <-- Init in AppDelegate
-var guiManager     :  GUIManager!
+var appManager     :  AppManager!       // <-- Init in AppDelegate
+var guiManager     :  GUIManager!       // <--- From here all are initialize in the app manager
 var dataManager    :  DataManager!
 var requestManager :  RequestManager!

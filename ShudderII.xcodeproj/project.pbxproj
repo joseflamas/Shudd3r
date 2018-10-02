@@ -17,7 +17,7 @@
 		BB490411216028AD003F10C2 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB490410216028AD003F10C2 /* Errors.swift */; };
 		BB4904162160297F003F10C2 /* AppManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4904152160297F003F10C2 /* AppManager.swift */; };
 		BB49041821602AA2003F10C2 /* GUIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB49041721602AA2003F10C2 /* GUIManager.swift */; };
-		BB49041A21602BBB003F10C2 /* FeaturedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB49041921602BBB003F10C2 /* FeaturedViewController.swift */; };
+		BB49041A21602BBB003F10C2 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB49041921602BBB003F10C2 /* HomeViewController.swift */; };
 		BB49041C21602F22003F10C2 /* Managers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB49041B21602F22003F10C2 /* Managers.swift */; };
 		BB49041E21604DF9003F10C2 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB49041D21604DF9003F10C2 /* DataManager.swift */; };
 		BB49042021604E50003F10C2 /* RequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB49041F21604E50003F10C2 /* RequestManager.swift */; };
@@ -65,7 +65,7 @@
 		BB490410216028AD003F10C2 /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
 		BB4904152160297F003F10C2 /* AppManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppManager.swift; sourceTree = "<group>"; };
 		BB49041721602AA2003F10C2 /* GUIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GUIManager.swift; sourceTree = "<group>"; };
-		BB49041921602BBB003F10C2 /* FeaturedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedViewController.swift; sourceTree = "<group>"; };
+		BB49041921602BBB003F10C2 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		BB49041B21602F22003F10C2 /* Managers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Managers.swift; sourceTree = "<group>"; };
 		BB49041D21604DF9003F10C2 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		BB49041F21604E50003F10C2 /* RequestManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestManager.swift; sourceTree = "<group>"; };
@@ -222,7 +222,7 @@
 		BB49040B2160260D003F10C2 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				BB49041921602BBB003F10C2 /* FeaturedViewController.swift */,
+				BB49041921602BBB003F10C2 /* HomeViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -428,7 +428,7 @@
 				BB49042C21613465003F10C2 /* HeroViewTableViewCell.swift in Sources */,
 				BB49043421619BCB003F10C2 /* MoviesCollectionsCollectionViewCell.swift in Sources */,
 				BBB3F447216293B700A5E8EA /* MovieDetailView.swift in Sources */,
-				BB49041A21602BBB003F10C2 /* FeaturedViewController.swift in Sources */,
+				BB49041A21602BBB003F10C2 /* HomeViewController.swift in Sources */,
 				BB4903D72160240D003F10C2 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

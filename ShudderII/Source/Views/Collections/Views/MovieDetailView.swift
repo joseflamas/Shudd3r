@@ -29,8 +29,10 @@ class MoviesDetailView : UIView {
         self.addGestureRecognizer(tap)
         
         moviePosterView = UIImageView(frame: self.bounds)
-        moviePosterView?.backgroundColor = .gray
+        moviePosterView?.backgroundColor = .clear
         addSubview(moviePosterView!)
+        
+        setConstraints()
         
         /// Move to request Manager
         DispatchQueue.global().async {
@@ -45,7 +47,7 @@ class MoviesDetailView : UIView {
     
     override init(frame: CGRect){
         super.init(frame: frame)
-        backgroundColor = .black
+        backgroundColor = .clear
         
     }
     
@@ -57,6 +59,17 @@ class MoviesDetailView : UIView {
 
 
 extension MoviesDetailView {
+    
+    /// Set constraints
+    private func setConstraints(){
+        /// Safe area
+        let guide = safeAreaLayoutGuide
+        moviePosterView?.trailingAnchor.constraint(equalTo: guide.trailingAnchor).isActive = true
+        moviePosterView?.leadingAnchor.constraint(equalTo: guide.leadingAnchor).isActive = true
+        moviePosterView?.topAnchor.constraint(equalTo: guide.topAnchor).isActive = true
+        moviePosterView?.bottomAnchor.constraint(equalTo: guide.bottomAnchor).isActive = true
+        
+    }
     
     @objc
     func handleTap(_ sender:Any){

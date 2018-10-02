@@ -20,16 +20,15 @@ class MoviesCollectionsTableViewCell : UITableViewCell {
         movieColletionData = andDataSource
         
         let layout = UICollectionViewFlowLayout()
-        layout.minimumInteritemSpacing = 0
-        layout.minimumLineSpacing      = 8
-        layout.sectionInset            = UIEdgeInsets(top: 4, left: 0, bottom: 4, right: 4)
         layout.scrollDirection = UICollectionView.ScrollDirection.horizontal
+        layout.minimumLineSpacing  = 4
         
-        collectionView = UICollectionView(frame: CGRect(x: 0, y: 0, width: self.bounds.width, height: 120), collectionViewLayout: layout)
+        
+        collectionView = UICollectionView(frame: CGRect(x: 0, y: 0, width: self.bounds.width, height: 150), collectionViewLayout: layout)
         collectionView?.delegate   = self
         collectionView?.dataSource = self
         collectionView?.register(MoviesCollectionsCollectionViewCell.self, forCellWithReuseIdentifier: "CollectionViewCell")
-        collectionView?.backgroundColor = .black
+        collectionView?.backgroundColor = .clear
         collectionView?.showsHorizontalScrollIndicator = false
         
         self.addSubview(collectionView!)
@@ -38,7 +37,7 @@ class MoviesCollectionsTableViewCell : UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?){
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        backgroundColor = .black
+        backgroundColor = .clear
         
     }
     
@@ -120,10 +119,10 @@ extension MoviesCollectionsTableViewCell : UICollectionViewDelegate {
         print(movie?.title ?? "" )
         print(movie?.largeImageStringUrl ?? "")
         
-        let moviDetail = MoviesDetailView(frame: guiManager.currentMainView.bounds, andMovieData: movie!)
+        let moviDetail = MoviesDetailView(frame: guiManager.getCurrentMainview().bounds, andMovieData: movie!)
         moviDetail.movie = movie
         
-        guiManager.currentMainView.addSubview(moviDetail)
+        guiManager.getmainWindow().addSubview(moviDetail)
     }
     
 }
@@ -133,6 +132,10 @@ extension MoviesCollectionsTableViewCell : UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 85, height: self.frame.height-10)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 8)
     }
     
 }
