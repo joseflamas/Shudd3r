@@ -142,13 +142,13 @@ extension MoviesCollectionsView : UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = UIView(frame: CGRect(x: 0,
                                               y: 0,
-                                              width: tableView.bounds.size.width,
-                                              height: tableView.bounds.size.height))
+                                              width: tableView.frame.size.width,
+                                              height: tableView.frame.size.height))
         headerView.backgroundColor = .clear
         let headerLabel = UILabel(frame: CGRect(x: 8,
                                                 y: 6,
-                                                width: tableView.bounds.size.width,
-                                                height: tableView.bounds.size.height))
+                                                width: tableView.frame.size.width,
+                                                height: tableView.frame.size.height))
         headerLabel.font = UIFont(name: "HelveticaNeue-CondensedBold", size: 14)
         headerLabel.textColor = .gray
         headerLabel.text = moviesSectionKeys[section]
