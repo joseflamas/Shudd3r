@@ -11,9 +11,35 @@ import UIKit
 
 class MoviesDetailView : UIView {
     
-    convenience init(frame: CGRect, andMovieData: Dictionary<String,[Movie]>) {
+    var movie : Movie?
+    var moviePosterView : UIImageView?
+    var moviePosterImage : UIImage! {
+        didSet{
+            guard let poster = self.moviePosterImage else { return }
+            moviePosterView?.image = poster
+            
+        }
+    }
+    
+    
+    convenience init(frame: CGRect, andMovieData: Movie) {
         self.init(frame: frame)
         
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
+        self.addGestureRecognizer(tap)
+        
+        moviePosterView = UIImageView(frame: self.bounds)
+        moviePosterView?.backgroundColor = .gray
+        addSubview(moviePosterView!)
+        
+        /// Move to request Manager
+        DispatchQueue.global().async {
+            let poster = try? Data(contentsOf: URL(string: (self.movie?.largeImageStringUrl)!)!)
+            DispatchQueue.main.async {
+                self.moviePosterImage = UIImage(data: poster!)
+                self.moviePosterView?.image = self.moviePosterImage
+            }
+        }
         
     }
     
@@ -26,5 +52,17 @@ class MoviesDetailView : UIView {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+}
+
+
+extension MoviesDetailView {
+    
+    @objc
+    func handleTap(_ sender:Any){
+        self.removeFromSuperview()
+        
+    }
+    
     
 }

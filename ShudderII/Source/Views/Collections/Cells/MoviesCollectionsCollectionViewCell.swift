@@ -24,7 +24,7 @@ class MoviesCollectionsCollectionViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor  = .white
+        backgroundColor  = .black
         
         moviePosterView = UIImageView(frame: self.bounds)
         moviePosterView?.backgroundColor = .gray

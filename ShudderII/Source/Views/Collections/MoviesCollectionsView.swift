@@ -63,8 +63,9 @@ extension MoviesCollectionsView : UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
-            let heroCell = HeroViewTableViewCell(style: .default, reuseIdentifier: heroViewCellIdentifier, andDataSource: moviesDataSource![moviesSectionKeys![indexPath.section]]!)
+            let heroCell = HeroViewTableViewCell(style: .default, reuseIdentifier: heroViewCellIdentifier, andDataSource: moviesDataSource![moviesSectionKeys!.last!]!)
             heroCell.selectionStyle = .none
+            
             return heroCell
             
         }

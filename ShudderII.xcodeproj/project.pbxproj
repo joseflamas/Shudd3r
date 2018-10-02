@@ -28,6 +28,7 @@
 		BB4904302161803F003F10C2 /* ArrayExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB49042F2161803F003F10C2 /* ArrayExtensions.swift */; };
 		BB49043421619BCB003F10C2 /* MoviesCollectionsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB49043321619BCB003F10C2 /* MoviesCollectionsCollectionViewCell.swift */; };
 		BBB3F447216293B700A5E8EA /* MovieDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB3F446216293B700A5E8EA /* MovieDetailView.swift */; };
+		BBB3F44C2162F02600A5E8EA /* HeroViewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB3F44B2162F02600A5E8EA /* HeroViewCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +76,7 @@
 		BB49042F2161803F003F10C2 /* ArrayExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtensions.swift; sourceTree = "<group>"; };
 		BB49043321619BCB003F10C2 /* MoviesCollectionsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesCollectionsCollectionViewCell.swift; sourceTree = "<group>"; };
 		BBB3F446216293B700A5E8EA /* MovieDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailView.swift; sourceTree = "<group>"; };
+		BBB3F44B2162F02600A5E8EA /* HeroViewCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroViewCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -275,6 +277,7 @@
 				BB490429216099CE003F10C2 /* MoviesCollectionsTableViewCell.swift */,
 				BB49043321619BCB003F10C2 /* MoviesCollectionsCollectionViewCell.swift */,
 				BB49042B21613465003F10C2 /* HeroViewTableViewCell.swift */,
+				BBB3F44B2162F02600A5E8EA /* HeroViewCollectionViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -409,6 +412,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BBB3F44C2162F02600A5E8EA /* HeroViewCollectionViewCell.swift in Sources */,
 				BB49042E2161544F003F10C2 /* Movie.swift in Sources */,
 				BB4904302161803F003F10C2 /* ArrayExtensions.swift in Sources */,
 				BB49041821602AA2003F10C2 /* GUIManager.swift in Sources */,
